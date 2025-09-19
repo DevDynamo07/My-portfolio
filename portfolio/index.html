@@ -1,0 +1,836 @@
+f<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaydev Semwal  | Neural Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cyberpunk Cursor Elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="cursor-reticle"></div>
+    
+    <!-- Boot Sequence Overlay -->
+    <div id="boot-sequence" class="boot-sequence active">
+        <div class="boot-content">
+            <div class="boot-logo">JS_</div>
+            <div class="boot-progress">
+                <div class="boot-progress-bar"></div>
+            </div>
+            <div class="boot-text"></div>
+            <div class="boot-status">
+                <span class="status-item">SYSTEM BOOT</span>
+                <span class="status-item">NEURAL LINK</span>
+                <span class="status-item">INTERFACE INIT</span>
+            </div>
+        </div>
+        <div class="boot-overlay"></div>
+        <div class="glitch-overlay"></div>
+    </div>
+
+    <!-- Neural Network Background -->
+    <div class="neural-network">
+        <canvas id="neural-canvas"></canvas>
+    </div>
+
+    <!-- HUD Elements -->
+    <div class="hud-elements">
+        <div class="hud-top-left">
+            <div class="hud-date"></div>
+            <div class="hud-status">SYSTEM ONLINE</div>
+        </div>
+        <div class="hud-top-right">
+            <div class="hud-metrics">
+                <div class="metric">
+                    <span class="metric-label">CPU</span>
+                    <span class="metric-value">87%</span>
+                    <div class="metric-bar"><div class="metric-fill"></div></div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">MEM</span>
+                    <span class="metric-value">64%</span>
+                    <div class="metric-bar"><div class="metric-fill"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="hud-bottom">
+            <div class="hud-scanner"></div>
+        </div>
+    </div>
+
+    <!-- Japanese Text Decorations -->
+    <div class="jp-text jp-text-1">अन्तः एव प्रारम्भः अस्ति।</div>
+    <div class="jp-text jp-text-2">सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामयाः।
+सर्वे भद्राणि पश्यन्तु। मा कश्चिद्दुःखभाग्भवेत्॥</div>
+    <div class="jp-text jp-text-3">धर्मो रक्षति रक्षितः</div>
+    <div class="jp-text jp-text-4"> ॐ दुं दुर्गायै नमः॥</div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <span>JS_</span>
+            <div class="logo-glitch"></div>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">HOME<span class="nav-link-jp">ホーム</span></a>
+            <a href="#about" class="nav-link">ABOUT<span class="nav-link-jp">概要</span></a>
+            <a href="#skills" class="nav-link">SKILLS<span class="nav-link-jp">スキル</span></a>
+            <a href="#projects" class="nav-link">PROJECTS<span class="nav-link-jp">プロジェクト</span></a>
+            <a href="#contact" class="nav-link">CONTACT<span class="nav-link-jp">接触</span></a>
+        </div>
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+        </div>
+        <div class="nav-scanner"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-header">
+                <div class="hero-id">
+                    <span class="id-label">ID:</span>
+                    <span class="id-value">JS-01-GHOST</span>
+                </div>
+                <div class="hero-status">NEURAL UPLINK ESTABLISHED</div>
+            </div>
+            <h1 class="ml12">JAYDEV<span class="highlight">SEMWAL</span><span class="blink">_</span></h1>
+            <div class="hero-subtitle">
+                <h2 class="ml9"><span class="text-wrapper"><span class="letters">WEB DEVELOPER</span></span></h2>
+                <div class="subtitle-decoration"></div>
+            </div>
+            <div class="hero-terminal">
+                <div class="terminal-header">
+                    <span>system.exe</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="hero-description terminal-text"></p>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn primary-btn">ESTABLISH CONNECTION</a>
+                <a href="#projects" class="btn secondary-btn">VIEW PROJECTS</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="cyber-frame">
+                <div class="cyber-frame-corner top-left"></div>
+                <div class="cyber-frame-corner top-right"></div>
+                <div class="cyber-frame-corner bottom-left"></div>
+                <div class="cyber-frame-corner bottom-right"></div>
+                <div class="cyber-frame-edge top"></div>
+                <div class="cyber-frame-edge right"></div>
+                <div class="cyber-frame-edge bottom"></div>
+                <div class="cyber-frame-edge left"></div>
+                <div class="cyber-frame-content">
+                    <div class="cyber-avatar">
+                        <div class="avatar-glitch"></div>
+                        <div class="avatar-scan"></div>
+                        <div class="avatar-text">JS_</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <div class="section-header-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-text">SYSTEM INFO</div>
+                <div class="decoration-line"></div>
+            </div>
+            <h2>ABOUT<span class="section-jp">概要</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="cyber-panel">
+                    <div class="panel-header">
+                        <span>PROFILE.SYS</span>
+                        <div class="panel-controls">
+                            <span class="panel-dot"></span>
+                            <span class="panel-dot"></span>
+                            <span class="panel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="image-container">
+                            <div class="image-placeholder">JS_</div>
+                            <div class="scan-line"></div>
+                            <div class="image-glitch"></div>
+                        </div>
+                        <div class="image-data">
+                            <div class="data-item">
+                                <div class="data-label">STATUS</div>
+                                <div class="data-value">ONLINE</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">UPTIME</div>
+                                <div class="data-value">23Y:4M:12D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <div class="cyber-panel">
+                    <div class="panel-header">
+                        <span>BIO.DAT</span>
+                        <div class="panel-controls">
+                            <span class="panel-dot"></span>
+                            <span class="panel-dot"></span>
+                            <span class="panel-dot"></span>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>WEB DEVELOPER & UI/UX SPECIALIST</h3>
+                        <div class="terminal-text-container">
+                            <p class="terminal-text">Greetings. I am Jaydev Semwal, a web developer specializing in neural interface design. Currently stationed at Chandigarh University, Punjab, India. My primary function is creating responsive and dynamic web applications with advanced user experience protocols.</p>
+                            <p class="terminal-text">Operating with both frontend and backend technologies, I engineer digital systems that balance aesthetic appeal with optimal performance metrics. My programming is continuously evolving to integrate emerging technologies.</p>
+                        </div>
+                        <div class="about-details">
+                            <div class="detail">
+                                <span class="detail-title">DESIGNATION:</span>
+                                <span class="detail-value">WEB DEVELOPER</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">COMM CHANNEL:</span>
+                                <span class="detail-value">+91 9760977319</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">DIRECT LINK:</span>
+                                <span class="detail-value">semwaljavdev01@gmail.com</span>
+                            </div>
+                            <div class="detail">
+                                <span class="detail-title">CURRENT EDU:</span>
+                                <span class="detail-value">Chandigarh University, Punjab, India</span>
+                            </div>
+                        </div>
+                        <a href="Purple and White Clean and Professional Resume.pdf" class="btn primary-btn" download="Jaydev_Semwal_Resume.pdf">
+    DOWNLOAD PROFILE
+</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-header">
+            <div class="section-header-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-text">CAPABILITY ANALYSIS</div>
+                <div class="decoration-line"></div>
+            </div>
+            <h2>SKILLS<span class="section-jp">スキル</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-content">
+            <div class="skills-text cyber-panel">
+                <div class="panel-header">
+                    <span>CAPABILITIES.SYS</span>
+                    <div class="panel-controls">
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <h3>TECHNICAL SPECIFICATIONS</h3>
+                    <p class="terminal-text">System analysis indicates advanced proficiency in multiple programming protocols. Primary function optimized for creating responsive, accessible, and high-performance digital interfaces with enhanced user experience algorithms.</p>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card cyber-panel" data-skill="HTML5">
+                    <div class="panel-header mini">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="95">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">95%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                  <span class="stat-label"></span>  
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">9.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="CSS3">
+                    <div class="panel-header mini">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">90%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">9.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="JavaScript">
+                    <div class="panel-header mini">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">8.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="React">
+                    <div class="panel-header mini">
+                        <span>React</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-react"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">80%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">8.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="Node.js">
+                    <div class="panel-header mini">
+                        <span>Node.js</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="75">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">75%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">7.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="MongoDB">
+                    <div class="panel-header mini">
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="70">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">70%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">7.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="Sass">
+                    <div class="panel-header mini">
+                        <span>Sass</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-sass"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">85%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">8.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card cyber-panel" data-skill="Git">
+                    <div class="panel-header mini">
+                        <span>Git</span>
+                    </div>
+                    <div class="panel-content">
+                        <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                        <div class="skill-data">
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80">
+                                    <div class="skill-fill"></div>
+                                </div>
+                                <div class="skill-percentage">80%</div>
+                            </div>
+                            <div class="skill-stats">
+                                <div class="stat">
+                                    <span class="stat-label"></span>
+                                    <span class="stat-value"></span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">LVL</span>
+                                    <span class="stat-value">8.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+    <div class="projects-header" style="text-align:center;">
+        <h1 class="main-heading">Projects</h1>
+        <div class="section-header-decoration">
+            <div class="decoration-line"></div>
+            <div class="decoration-text">PROJECT DATABASE</div>
+            <div class="decoration-line"></div>
+        </div>
+    </div>
+
+
+    <div class="projects-grid">
+    <!-- E-COMMERCE -->
+    <div class="project-card cyber-panel" data-category="frontend">
+        <div class="panel-header">
+            <span>E-COMMERCE.SYS</span>
+            <div class="panel-controls">
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="project-img">
+                <div class="cyber-frame">
+                    <div class="cyber-frame-corner top-left"></div>
+                    <div class="cyber-frame-corner top-right"></div>
+                    <div class="cyber-frame-corner bottom-left"></div>
+                    <div class="cyber-frame-corner bottom-right"></div>
+                    <div class="cyber-frame-content">
+                        <div class="project-img-placeholder">
+                            <img src="ChatGPT Image Sep 6, 2025, 03_56_04 PM.png" alt="E-Commerce Project">
+                        </div>
+                        <div class="project-img-overlay"></div>
+                        <div class="project-img-scan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-header">
+                    <h3>E-COMMERCE PLATFORM</h3>
+                    <div class="project-status">STATUS: DEPLOYED</div>
+                </div>
+                <p class="terminal-text">Responsive digital marketplace with advanced filtering algorithms, secure transaction protocols, and payment gateway integration.</p>
+                <div class="project-tags">
+                    <span>React</span>
+                    <span>Redux</span>
+                    <span>CSS3</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://minimart-gamma.vercel.app/" class="btn small-btn"><i class="fas fa-external-link-alt"></i> ACCESS</a>
+                    <a href="https://github.com/DevDynamo07/Minimart" class="btn small-btn"><i class="fab fa-github"></i> SOURCE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASK MANAGER -->
+    <div class="project-card cyber-panel" data-category="fullstack">
+        <div class="panel-header">
+            <span>TASK-MANAGER.SYS</span>
+            <div class="panel-controls">
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="project-img">
+                <div class="cyber-frame">
+                    <div class="cyber-frame-corner top-left"></div>
+                    <div class="cyber-frame-corner top-right"></div>
+                    <div class="cyber-frame-corner bottom-left"></div>
+                    <div class="cyber-frame-corner bottom-right"></div>
+                    <div class="cyber-frame-content">
+                        <div class="project-img-placeholder">
+                            <img src="Gemini_Generated_Image_76w97q76w97q76w9.png" alt="Task Manager Project">
+                        </div>
+                        <div class="project-img-overlay"></div>
+                        <div class="project-img-scan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-header">
+                    <h3>TASK MANAGEMENT SYSTEM</h3>
+                    <div class="project-status">STATUS: PROTOTYPE</div>
+                </div>
+                <p class="terminal-text">Full-stack productivity interface with secure authentication protocols, task creation algorithms, and real-time progress tracking.</p>
+                <div class="project-tags">
+                    <span>Node.js</span>
+                    <span>Express</span>
+                    <span>MongoDB</span>
+                    <span>React</span>
+                </div>
+                <!--<div class="project-links">
+                    <a href="#" class="btn small-btn"><i class="fas fa-external-link-alt"></i> ACCESS</a>
+                    <a href="#" class="btn small-btn"><i class="fab fa-github"></i> SOURCE</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAVEL -->
+    <div class="project-card cyber-panel" data-category="ui">
+        <div class="panel-header">
+            <span>MOVIES SEARCH </span>
+            <div class="panel-controls">
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="project-img">
+                <div class="cyber-frame">
+                    <div class="cyber-frame-corner top-left"></div>
+                    <div class="cyber-frame-corner top-right"></div>
+                    <div class="cyber-frame-corner bottom-left"></div>
+                    <div class="cyber-frame-corner bottom-right"></div>
+                    <div class="cyber-frame-content">
+                        <div class="project-img-placeholder">
+                            <img src="Gemini_Generated_Image_o86v0mo86v0mo86v.png" alt="MOVIES SEARCH">
+                        </div>
+                        <div class="project-img-overlay"></div>
+                        <div class="project-img-scan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-header">
+                    <h3>MOVIES SEARCH</h3>
+                    <div class="project-status">STATUS: DEPLOYED</div>
+                </div>
+                <p class="terminal-text">Advanced UI design for An interactive frontend application that allows users to search for movies in real-time. It fetches data from a public movie API (like OMDb API
+ or TMDb API
+) and displays movie details such as title, poster, release year, genre, and ratings..</p>
+                <div class="project-tags">
+                    <span>Figma</span>
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://movies-search-psi.vercel.app/" class="btn small-btn"><i class="fas fa-external-link-alt"></i> ACCESS</a>
+                    <a href="https://github.com/DevDynamo07/Movies_Search" class="btn small-btn"><i class="fab fa-github"></i> SOURCE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEATHER -->
+    <div class="project-card cyber-panel" data-category="frontend">
+        <div class="panel-header">
+            <span>WEATHER-SYS.EXE</span>
+            <div class="panel-controls">
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+                <span class="panel-dot"></span>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="project-img">
+                <div class="cyber-frame">
+                    <div class="cyber-frame-corner top-left"></div>
+                    <div class="cyber-frame-corner top-right"></div>
+                    <div class="cyber-frame-corner bottom-left"></div>
+                    <div class="cyber-frame-corner bottom-right"></div>
+                    <div class="cyber-frame-content">
+                        <div class="project-img-placeholder">
+                            <img src="generated-image.png" alt="Weather Monitoring Project">
+                        </div>
+                        <div class="project-img-overlay"></div>
+                        <div class="project-img-scan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-header">
+                    <h3>WEATHER MONITORING SYSTEM</h3>
+                    <div class="project-status">STATUS:DEPLOYED </div>
+                </div>
+                <p class="terminal-text">Meteorological data visualization application with real-time API integration for current and predictive atmospheric conditions.</p>
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                    <span>API</span>
+                    <span>CSS3</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://weather-station-ecru-xi.vercel.app/" class="btn small-btn"><i class="fas fa-external-link-alt"></i> ACCESS</a>
+                    <a href="https://github.com/DevDynamo07/weather-station" class="btn small-btn"><i class="fab fa-github"></i> SOURCE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <div class="section-header-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-text">COMMUNICATION PROTOCOLS</div>
+                <div class="decoration-line"></div>
+            </div>
+            <h2>CONTACT<span class="section-jp">接触</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info cyber-panel">
+                <div class="panel-header">
+                    <span>COMM-CHANNELS.SYS</span>
+                    <div class="panel-controls">
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <h3>ESTABLISH CONNECTION</h3>
+                    <p class="terminal-text">Secure communication channels available for project inquiries, collaboration protocols, or general data exchange.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                                <div class="icon-pulse"></div>
+                            </div>
+                            <div class="contact-text">
+                                <h4>COMM CHANNEL</h4>
+                                <p>+91 9760977319</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                                <div class="icon-pulse"></div>
+                            </div>
+                            <div class="contact-text">
+                                <h4>DIRECT LINK</h4>
+                                <p>semwaljaydev01@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="icon-pulse"></div>
+                            </div>
+                            <div class="contact-text">
+                                <h4>CURRENT EDU</h4>
+                                <p>Chandigarh University, Punjab, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/jaydev-semwal-308299322/" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                            <div class="link-pulse"></div>
+                        </a>
+                        <a href="https://github.com/DevDynamo07" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <div class="link-pulse"></div>
+                        </a>
+                        <a href="" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                            <div class="link-pulse"></div>
+                        </a>
+                        <a href="https://www.instagram.com/jaysemwal0" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                            <div class="link-pulse"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form cyber-panel">
+                <div class="panel-header">
+                    <span>MESSAGE-TRANSMISSION.EXE</span>
+                    <div class="panel-controls">
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                        <span class="panel-dot"></span>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="form-header">
+                        <div class="form-status">SECURE CHANNEL</div>
+                        <div class="form-encryption">ENCRYPTION: ENABLED</div>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">IDENTIFIER</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your designation" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">COMM CHANNEL</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your communication address" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">TRANSMISSION SUBJECT</label>
+                            <input type="text" id="subject" name="subject" placeholder="Enter message subject" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">DATA PACKET</label>
+                            <textarea id="message" name="message" placeholder="Enter your message data" required></textarea>
+                            <div class="input-focus-effect textarea"></div>
+                        </div>
+                        <button type="submit" class="btn primary-btn">TRANSMIT MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-decoration">
+            <div class="footer-circuit"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>JS_</span>
+                <div class="logo-glitch"></div>
+                <p>JAYDEV SEMWAL</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">HOME<span class="link-jp">ホーム</span></a>
+                <a href="#about">ABOUT<span class="link-jp">概要</span></a>
+                <a href="#skills">SKILLS<span class="link-jp">スキル</span></a>
+                <a href="#projects">PROJECTS<span class="link-jp">プロジェクト</span></a>
+                <a href="#contact">CONTACT<span class="link-jp">接触</span></a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/jaydev-semwal-308299322/" class="social-link" target="blank">
+                    <i class="fab fa-linkedin-in"></i>
+                    <div class="link-pulse"></div>
+                </a>
+                <a href="https://github.com/DevDynamo07" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <div class="link-pulse"></div>
+                </a>
+                <a href="#" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                    <div class="link-pulse"></div>
+                </a>
+                <a href="https://www.instagram.com/jaysemwal0" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <div class="link-pulse"></div>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-status">
+                <span class="status-item">SYSTEM ACTIVE</span>
+                <span class="status-item">UPTIME: <span class="uptime-counter">00:00:00</span></span>
+                <span class="status-item">VERSION 2.0.4</span>
+            </div>
+            <p>&copy; 2023 JAYDEV SEMWAL // ALL RIGHTS SECURED</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top cyber-btn">
+        <span class="btn-text">RETURN</span>
+        <i class="fas fa-arrow-up"></i>
+        <div class="btn-glitch"></div>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
